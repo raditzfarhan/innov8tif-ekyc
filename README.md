@@ -21,9 +21,9 @@ composer require raditzfarhan/innov8tif-ekyc
 - `drivingLicense(string $caseNo, string $idImageBase64Image)`
 - `sss(string $caseNo, string $idImageBase64Image)`
 - `umid(string $caseNo, string $idImageBase64Image)`
+- `voterId(string $caseNo, string $idImageBase64Image)`
 - `postalId(string $caseNo, string $idImageBase64Image)`
 - `prcProfessionalIdCard(string $caseNo, string $idImageBase64Image)`
-- `voterId(string $caseNo, string $idImageBase64Image)`
 - `nationalId(string $idImageBase64Image)`
 
 ## Usage
