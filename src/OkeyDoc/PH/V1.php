@@ -9,14 +9,14 @@ use RaditzFarhan\Innov8tifEkyc\RestClient;
 class V1 extends RestClient
 {
     private string $version = 'v1';
-    
+
     private string $apiKey;
 
     private Config $config;
 
     private Helper $helper;
 
-    private string $base_uri;    
+    private string $base_uri;
 
     public function __construct(string $apiKey)
     {
@@ -29,13 +29,13 @@ class V1 extends RestClient
         $this->base_uri = $this->config->get('okeydoc.base_uri');
     }
 
-    public function voterId(string $caseNo, string $idImageBase64Image)
+    public function voterId(string $idImageBase64Image, mixed $caseNo = null)
     {
         extract(get_object_vars($this));
 
         return $this->method('POST')
             ->endPoint($this->getUrl(__FUNCTION__))
-            ->payload(compact('apiKey', 'caseNo', 'idImageBase64Image'))
+            ->payload(compact('apiKey', 'idImageBase64Image', 'caseNo'))
             ->execute();
     }
 
