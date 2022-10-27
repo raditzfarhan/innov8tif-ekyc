@@ -1,0 +1,44 @@
+{
+    "name": "raditzfarhan/innov8tif-ekyc",
+    "description": "Innov8tif eKYC SDK",
+    "keywords": [
+        "raditzfarhan",
+        "innov8tif-ekyc"
+    ],
+    "homepage": "https://github.com/raditzfarhan/innov8tif-ekyc",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Farhan",
+            "email": "raditzfarhan@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "guzzlehttp/guzzle": "^7.5",
+        "hassankhan/config": "^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Raditzfarhan\\Innov8tifEkyc\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Raditzfarhan\\Innov8tifEkyc\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
