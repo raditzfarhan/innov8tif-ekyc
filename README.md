@@ -66,7 +66,7 @@ try {
 #### OkeyID
 
 ```php
-use RaditzFarhan\Innov8tifEkyc\OkeyID\Client
+use RaditzFarhan\Innov8tifEkyc\OkeyID\Client;
 use RaditzFarhan\Innov8tifEkyc\Exceptions\APIError;
 
 ...
