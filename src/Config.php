@@ -41,6 +41,17 @@ class Config extends AbstractConfig
                         'route' => '/doc-verify/ph-national-id',
                     ]
                 ]
+            ],
+            'okeyid' => [
+                'base_uri' => 'https://okayiddemo.innov8tif.com/okayid/api',
+                'ocr' => [
+                    'latest_version' => 'v3',
+                    'route' => '/ocr',
+                ],
+                'document_type' => [
+                    'latest_version' => 'v1',
+                    'route' => '/ocr/documenttype',
+                ]
             ]
         ];
     }
