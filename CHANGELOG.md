@@ -1,7 +1,11 @@
 # Changelog
 
-All notable changes to `innov8tif-ekyc` will be documented in this file
+All notable changes to `raditzfarhan/innov8tif-ekyc` will be documented in this file
 
-## 1.0.0 - 201X-XX-XX
+## 1.0.0 - 2022-10-28
 
-- initial release
+- Initial release
+
+### Added
+- Add OkeyDoc Philippines APIs.
+- Add `drivingLicense`, `sss`, `umid`, `voterId`, `postalId`, `prcProfessionalIdCard`, `nationalId` for PH.
