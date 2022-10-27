@@ -15,7 +15,7 @@ composer require raditzfarhan/innov8tif-ekyc
 ```
 
 ## Available Methods
-### OkeyDoc
+### OkeyDoc 
 
 #### Philippines
 - `drivingLicense(string $caseNo, string $idImageBase64Image)`
@@ -26,7 +26,17 @@ composer require raditzfarhan/innov8tif-ekyc
 - `prcProfessionalIdCard(string $caseNo, string $idImageBase64Image)`
 - `nationalId(string $idImageBase64Image)`
 
+[Reference](https://api2-ekycapis.innov8tif.com/okaydoc/okaydoc-all/supported-documents/philippines)
+
+### OkeyID
+- `ocr(string $base64ImageString, $backImage, string $docTypeEnabled, string $faceImageEnabled, string $imageEnabled, string $imageFormat)`
+- `documentType(string $base64ImageString, string $backImage, string $imageFormat, bool $imageEnabled)`
+
+[Reference](https://api2-ekycapis.innov8tif.com/okayid/okayid-all/ocr-api)
+
 ## Usage
+
+#### OkeyDoc
 
 ```php
 use RaditzFarhan\Innov8tifEkyc\OkeyDoc\PH\Client;
@@ -46,6 +56,31 @@ try {
     // $e->getMessage()
     // $e->getMessageCode()
     // $e->getMetaData()
+    // $e->getResponseData() // raw response
+    throw $e;
+} catch (\Throwable $th) {
+    throw $th;
+}
+```
+
+#### OkeyID
+
+```php
+use RaditzFarhan\Innov8tifEkyc\OkeyID\Client
+use RaditzFarhan\Innov8tifEkyc\Exceptions\APIError;
+
+...
+
+$client = new Client($apiKey);
+
+try {
+    $response = $client->ocr($base64ImageString);
+    
+    // success, do something with $response
+} catch (APIError $e) {
+    // Catch API Error
+    // $e->getStatus()
+    // $e->getMessage()
     // $e->getResponseData() // raw response
     throw $e;
 } catch (\Throwable $th) {

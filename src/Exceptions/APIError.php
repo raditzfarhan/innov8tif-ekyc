@@ -10,7 +10,7 @@ class APIError extends Exception
 
     protected string $status;
 
-    protected string $messageCode;
+    protected $messageCode;
 
     protected $metaData = null;
 
@@ -20,9 +20,9 @@ class APIError extends Exception
         $this->responseData = $responseData;
         $this->status = $this->extractData($this->responseData, 'status') ?? 'failed';
         $this->messageCode = $this->extractData($this->responseData, 'messageCode');
-        $message = $this->extractData($this->responseData, 'message') ?? $message;
+        $message = $this->extractData($this->responseData, 'message') ?? $this->extractData($this->responseData, 'statusMessage') ?? $message;
 
-        unset($responseData['status'], $responseData['messageCode'], $responseData['message']);
+        unset($responseData['status'], $responseData['messageCode'], $responseData['message'], $responseData['statusMessage']);
 
         if (is_array($responseData) && count($responseData) > 0) {
             $this->metaData = $responseData;

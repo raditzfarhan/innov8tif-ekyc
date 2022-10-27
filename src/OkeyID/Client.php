@@ -1,6 +1,6 @@
 <?php
 
-namespace RaditzFarhan\Innov8tifEkyc\OkeyDoc\PH;
+namespace RaditzFarhan\Innov8tifEkyc\OkeyID;
 
 use RaditzFarhan\Innov8tifEkyc\Config;
 use RaditzFarhan\Innov8tifEkyc\Helper;
@@ -13,10 +13,6 @@ class Client
 
     private Helper $helper;
 
-    private string $version;
-
-    private $client;
-
     public function __construct(string $apiKey)
     {
         $this->apiKey = $apiKey;
@@ -26,10 +22,10 @@ class Client
 
     public function __call($name, $arguments)
     {
-        $config = $this->config->get('okeydoc.ph.' . $this->helper->snakeCase($name));
+        $config = $this->config->get('okeyid.' . $this->helper->snakeCase($name));
         $latestVersion =  $config['latest_version'];
 
-        $class = "\RaditzFarhan\Innov8tifEkyc\OkeyDoc\PH\\" . strtoupper($latestVersion);
+        $class = "\RaditzFarhan\Innov8tifEkyc\OkeyID\\" . strtoupper($latestVersion);
 
         $client = new $class($this->apiKey);
 
