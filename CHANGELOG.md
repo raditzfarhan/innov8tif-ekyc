@@ -2,6 +2,11 @@
 
 All notable changes to `raditzfarhan/innov8tif-ekyc` will be documented in this file
 
+## 1.0.3 - 2022-10-28
+
+### Changed
+- Lower down Guzzle version because of compatibility issue.
+
 ## 1.0.2 - 2022-10-28
 
 ### Changed
