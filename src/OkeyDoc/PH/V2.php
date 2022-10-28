@@ -16,7 +16,7 @@ class V2 extends RestClient
 
     private Helper $helper;
 
-    private string $base_uri;    
+    private string $base_uri;
 
     public function __construct(string $apiKey)
     {
@@ -29,53 +29,53 @@ class V2 extends RestClient
         $this->base_uri = $this->config->get('okeydoc.base_uri');
     }
 
-    public function drivingLicense(string $caseNo, string $idImageBase64Image)
+    public function drivingLicense(string $idImageBase64Image, mixed $caseNo = null)
     {
         extract(get_object_vars($this));
 
         return $this->method('POST')
             ->endPoint($this->getUrl(__FUNCTION__))
-            ->payload(compact('apiKey', 'caseNo', 'idImageBase64Image'))
+            ->payload(compact('apiKey', 'idImageBase64Image', 'caseNo'))
             ->execute();
     }
 
-    public function sss(string $caseNo, string $idImageBase64Image)
+    public function sss(string $idImageBase64Image, mixed $caseNo = null)
     {
         extract(get_object_vars($this));
 
         return $this->method('POST')
             ->endPoint($this->getUrl(__FUNCTION__))
-            ->payload(compact('apiKey', 'caseNo', 'idImageBase64Image'))
+            ->payload(compact('apiKey', 'idImageBase64Image', 'caseNo'))
             ->execute();
     }
 
-    public function umid(string $caseNo, string $idImageBase64Image)
+    public function umid(string $idImageBase64Image, mixed $caseNo = null)
     {
         extract(get_object_vars($this));
 
         return $this->method('POST')
             ->endPoint($this->getUrl(__FUNCTION__))
-            ->payload(compact('apiKey', 'caseNo', 'idImageBase64Image'))
+            ->payload(compact('apiKey', 'idImageBase64Image', 'caseNo'))
             ->execute();
     }
 
-    public function postalId(string $caseNo, string $idImageBase64Image)
+    public function postalId(string $idImageBase64Image, mixed $caseNo = null)
     {
         extract(get_object_vars($this));
 
         return $this->method('POST')
             ->endPoint($this->getUrl(__FUNCTION__))
-            ->payload(compact('apiKey', 'caseNo', 'idImageBase64Image'))
+            ->payload(compact('apiKey', 'idImageBase64Image', 'caseNo'))
             ->execute();
     }
 
-    public function prcProfessionalIdCard(string $caseNo, string $idImageBase64Image)
+    public function prcProfessionalIdCard(string $idImageBase64Image, mixed $caseNo = null)
     {
         extract(get_object_vars($this));
 
         return $this->method('POST')
             ->endPoint($this->getUrl(__FUNCTION__))
-            ->payload(compact('apiKey', 'caseNo', 'idImageBase64Image'))
+            ->payload(compact('apiKey', 'idImageBase64Image', 'caseNo'))
             ->execute();
     }
 
