@@ -35,7 +35,7 @@ composer require raditzfarhan/innov8tif-ekyc
 For more details, refer [here](https://api2-ekycapis.innov8tif.com/okaydoc/okaydoc-all/supported-documents/philippines).
 
 ### OkeyID
-- `ocr(string $base64ImageString, $backImage, ?string $docTypeEnabled, ?string $faceImageEnabled, ?string $imageEnabled, ?string $imageFormat)`
+- `ocr(string $base64ImageString, ?string $backImage, ?string $docTypeEnabled, ?string $faceImageEnabled, ?string $imageEnabled, ?string $imageFormat)`
 - `documentType(string $base64ImageString, string $backImage, string $imageFormat, ?bool $imageEnabled)`
 
 #### Parameters
