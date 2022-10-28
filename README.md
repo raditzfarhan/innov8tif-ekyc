@@ -18,21 +18,37 @@ composer require raditzfarhan/innov8tif-ekyc
 ### OkeyDoc 
 
 #### Philippines
-- `drivingLicense(string $caseNo, string $idImageBase64Image)`
-- `sss(string $caseNo, string $idImageBase64Image)`
-- `umid(string $caseNo, string $idImageBase64Image)`
-- `voterId(string $caseNo, string $idImageBase64Image)`
-- `postalId(string $caseNo, string $idImageBase64Image)`
-- `prcProfessionalIdCard(string $caseNo, string $idImageBase64Image)`
+- `drivingLicense(string $idImageBase64Image, ?mixed $caseNo)`
+- `sss(string $idImageBase64Image, ?mixed $caseNo)`
+- `umid(string $idImageBase64Image, ?mixed $caseNo)`
+- `voterId(string $idImageBase64Image, ?mixed $caseNo)`
+- `postalId(string $idImageBase64Image, ?mixed $caseNo)`
+- `prcProfessionalIdCard(string $idImageBase64Image, ?mixed $caseNo)`
 - `nationalId(string $idImageBase64Image)`
 
-[Reference](https://api2-ekycapis.innov8tif.com/okaydoc/okaydoc-all/supported-documents/philippines)
+#### Parameters
+| Name                     | Type         | Required   | Description  
+|--------------------------|--------------|------------|-----------------
+| idImageBase64Image       | string       | Yes        | Image in base64 corresponds to the method used
+| caseNo                   | string\|null  | No         | Reference code given by user  
+
+For more details, refer [here](https://api2-ekycapis.innov8tif.com/okaydoc/okaydoc-all/supported-documents/philippines).
 
 ### OkeyID
-- `ocr(string $base64ImageString, $backImage, string $docTypeEnabled, string $faceImageEnabled, string $imageEnabled, string $imageFormat)`
-- `documentType(string $base64ImageString, string $backImage, string $imageFormat, bool $imageEnabled)`
+- `ocr(string $base64ImageString, $backImage, ?string $docTypeEnabled, ?string $faceImageEnabled, ?string $imageEnabled, ?string $imageFormat)`
+- `documentType(string $base64ImageString, string $backImage, string $imageFormat, ?bool $imageEnabled)`
 
-[Reference](https://api2-ekycapis.innov8tif.com/okayid/okayid-all/ocr-api)
+#### Parameters
+| Name                     | Type           | Required                             | Description  
+|--------------------------|----------------|--------------------------------------|-----------------
+| base64ImageString        | string         | Yes                                  | Front id card/passport image in base64
+| backImage                | string         | No on `ocr`, Yes on `documentType`   | Reference code given by user
+| docTypeEnabled           | string         | No                                   | Set to `true` - Document type will be returned. Default to `true`.
+| faceImageEnabled         | string         | No                                   | Set to `true` - Cropped face image will be returned. Default to `true`.
+| imageEnabled             | string\|boolean | No                                   | Set to `true` - Cropped document image will be returned. Default to `true`.
+| imageFormat              | string         | No on `ocr`, Yes on `documentType`   | Clarify the image format jpg, jpeg, png, bmp, gif, tiff, tif. Leave blank if unsure.
+
+For more details, refer [here](https://api2-ekycapis.innov8tif.com/okayid/okayid-all/ocr-api).
 
 ## Usage
 
@@ -46,8 +62,11 @@ use RaditzFarhan\Innov8tifEkyc\Exceptions\APIError;
 
 $client = new Client($apiKey);
 
+$caseNo = 'CASE 1234';
+$idImageBase64Image = '/9j/4AAQSkZJ...fYs1wRtQHt//Z\r\n';
+
 try {
-    $response = $client->drivingLicense($caseNo, $b64image);
+    $response = $client->drivingLicense($idImageBase64Image, $caseNo);
     
     // success, do something with $response
 } catch (APIError $e) {
@@ -72,6 +91,8 @@ use RaditzFarhan\Innov8tifEkyc\Exceptions\APIError;
 ...
 
 $client = new Client($apiKey);
+
+$base64ImageString = '/9j/4AAQSkZJ...fYs1wRtQHt//Z\r\n';
 
 try {
     $response = $client->ocr($base64ImageString);
